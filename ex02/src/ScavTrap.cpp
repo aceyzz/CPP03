@@ -6,7 +6,7 @@
 /*   By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 05:51:31 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/02/22 07:07:29 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/02/22 06:56:50 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,5 @@ void	ScavTrap::attack(const std::string &target)
 
 void	ScavTrap::guardGate(void)
 {
-	if (this->_health == 0)
-		return (this->printAction("ScavTrap ", this->_name, " wants to be in Gate keeper mode, but he's dead"));
-	else
-		return (this->printAction("ScavTrap ", this->_name, " is now in Gate keeper mode."));
+	return (this->printAction("ScavTrap ", this->_name, " is now in Gate keeper mode."));
 }
