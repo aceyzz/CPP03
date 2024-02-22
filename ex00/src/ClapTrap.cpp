@@ -6,7 +6,7 @@
 /*   By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 13:25:11 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/02/20 15:34:47 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/02/22 05:40:09 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ClapTrap::printInfos(void)
 
 // CONSTRUCTORS AND DESTRUCTOR /////////////////////////////////////////////////
 ClapTrap::ClapTrap(const std::string name)
-: _name(name), _health(10), _energy(10), _attack(2), _target(nullptr)
+: _name(name), _health(10), _energy(10), _attack(0), _target(nullptr)
 {
 	this->printAction(this->_name, ": Default Constructor Called");
 }
@@ -79,11 +79,10 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		return (printAction(this->_name, " is already dead. Leave him alone ! No damage added."));
 	
 	(amount > this->_health) ? this->_health = 0 : this->_health -= amount;
-	std::cout << MAG << this->_name << RST " take " YEL << amount << RST " of damage.";
-	std::cout << " Now he has " GRE << this->_health << RST "/10 health points" << std::endl;
-	
-	if (this->_health == 0)
-		std::cout << MAG << this->_name << RST " is now dead. RIP" << std::endl;
+	std::cout << MAG << this->_name << RST;
+	std::cout << " take " YEL << amount << RST " of damage.";
+	std::cout << " Now he has " GRE << this->_health;
+	std::cout << RST "/10 health points" << std::endl;
 	
 	return ;
 }
@@ -91,28 +90,35 @@ void	ClapTrap::takeDamage(unsigned int amount)
 void	ClapTrap::beRepaired(unsigned int amount)
 {
 	this->printAction(this->_name, " tries to heal himself");
+	
 	((amount + this->_health) > 10) ? this->_health = 10 : this->_health += amount;
 	std::cout << MAG << this->_name << RST " restore " YEL << amount << RST " of health points.";
 	std::cout << " Now he has " GRE << this->_health << RST "/10 health points.";
-	std::cout << " It costed 1 energy point. He has now " GRE;
-	std::cout << this->_energy << RST "/10 energy points." << std::endl;
+	
+	std::cout << " It costed 1 energy point (" GRE;
+	std::cout << this->_energy << RST "/10 energy points left)." << std::endl;
+	
 	return ;
 }
 
 void	ClapTrap::attack(const std::string &target)
 {
 	this->printAction(this->_name, " tries to attack:");
+	
 	if (!this->_energy || !this->_health)
 		return (this->printAction(this->_name, " does not have energy, or is dead. Can't attack."));
 	if (this->_target == nullptr)
 		return (this->printAction(this->_name, " has no target defined. Can't attack."));
 	if (this->_target->_name != target)
 		return (this->printAction(this->_name, " " YEL + target + RST " isn't his target. Can't attack."));
+	
 	this->_energy--;
+	
 	std::cout << "ClapTrap " MAG << this->_name << RST " attacks " MAG  << target;
 	std::cout << RST " causing " YEL << this->_attack << RST " points of damage. ";
 	std::cout << "It costed him 1 energy points. (" GRE << this->_energy << RST "/10 points left)";
 	std::cout << std::endl;
+	
 	this->_target->takeDamage(this->_attack);
 }
 ///////////////////////////////////////////////////////////////////////////////

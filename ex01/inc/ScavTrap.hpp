@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 14:53:23 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/02/21 15:08:14 by cedmulle         ###   ########.fr       */
+/*   Created: 2024/02/22 05:41:46 by cedmulle          #+#    #+#             */
+/*   Updated: 2024/02/22 06:58:40 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ class	ScavTrap : public ClapTrap
 		ScavTrap(std::string name);
 		ScavTrap(const ScavTrap &s);
 		ScavTrap &operator=(const ScavTrap &s);
-		~ScavTrap(void);
+		~ScavTrap();
 
+		void attack(const std::string &target);
+		void setTarget(ScavTrap *target);
 		void guardGate(void);
 	private:
-		std::string		_name;
-		unsigned int	_health;
-		unsigned int	_energy;
-		unsigned int	_attack;
+		ScavTrap(void);
+		ScavTrap *_target;
 };
 
 #endif

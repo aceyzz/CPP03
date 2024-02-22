@@ -6,7 +6,7 @@
 /*   By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 13:16:47 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/02/21 15:02:26 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/02/22 06:47:31 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,11 @@ class	ClapTrap
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 
-		void printAction(std::string entity, const std::string message);
+		void printAction(const std::string type, const std::string entity, const std::string message);
 		void printInfos(void);
+
 		void setTarget(ClapTrap *target);
-	private:
+	protected:
 		std::string		_name;
 		unsigned int	_health;
 		unsigned int	_energy;
