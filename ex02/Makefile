@@ -6,7 +6,7 @@
 #    By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/20 14:59:33 by cedmulle          #+#    #+#              #
-#    Updated: 2024/02/22 05:59:13 by cedmulle         ###   ########.fr        #
+#    Updated: 2024/02/22 07:23:31 by cedmulle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRC_DIR	= src/
 INC_DIR	= inc/
 SRC		= $(SRC_DIR)ClapTrap.cpp \
 			$(SRC_DIR)ScavTrap.cpp \
+			$(SRC_DIR)FragTrap.cpp \
 			$(SRC_DIR)main.cpp
 OBJ		= $(SRC:.cpp=.o)
 CC		= c++
