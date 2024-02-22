@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: cedmulle <cedmulle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 05:41:46 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/02/22 06:58:40 by cedmulle         ###   ########.fr       */
+/*   Created: 2024/02/22 17:33:42 by cedmulle          #+#    #+#             */
+/*   Updated: 2024/02/22 20:22:37 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 
 # include "ClapTrap.hpp"
 
-class	ScavTrap : public ClapTrap
+class	ScavTrap : virtual public ClapTrap
 {
 	public:
-		ScavTrap(std::string name);
+		ScavTrap(void);
+		ScavTrap(const std::string name);
 		ScavTrap(const ScavTrap &s);
 		ScavTrap &operator=(const ScavTrap &s);
-		~ScavTrap();
+		~ScavTrap(void);
 
 		void attack(const std::string &target);
-		void setTarget(ScavTrap *target);
-		void guardGate(void);
-	private:
-		ScavTrap(void);
-		ScavTrap *_target;
+		void takeDamage(unsigned int amount);
+		void beRepaired(unsigned int amount);
+
+		void guardGate();
 };
 
 #endif

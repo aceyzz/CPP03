@@ -3,30 +3,30 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+         #
+#    By: cedmulle <cedmulle@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/20 14:59:33 by cedmulle          #+#    #+#              #
-#    Updated: 2024/02/22 08:16:08 by cedmulle         ###   ########.fr        #
+#    Created: 2024/02/22 14:49:10 by cedmulle          #+#    #+#              #
+#    Updated: 2024/02/22 18:05:36 by cedmulle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= trap
+NAME	= diamond
 SRC_DIR	= src/
 INC_DIR	= inc/
-SRC		= $(SRC_DIR)ClapTrap.cpp \
+SRC 	= $(SRC_DIR)ClapTrap.cpp \
 			$(SRC_DIR)ScavTrap.cpp \
 			$(SRC_DIR)FragTrap.cpp \
 			$(SRC_DIR)DiamondTrap.cpp \
 			$(SRC_DIR)main.cpp
 OBJ		= $(SRC:.cpp=.o)
-CC		= c++
-CFL		= -Wall -Wextra -Werror -std=c++98
+CXX		= c++
+CFL		= -Wall -Werror -Wextra -std=c++98
 RM		= rm -rf
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFL) -I $(INC_DIR) $(OBJ) -o $(NAME)
+	$(CXX) $(CFL) -I $(INC_DIR) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
 	$(CC) $(CFL) -I $(INC_DIR) -c $< -o $@
@@ -38,4 +38,3 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
-

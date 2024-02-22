@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: cedmulle <cedmulle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 07:08:28 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/02/22 07:27:09 by cedmulle         ###   ########.fr       */
+/*   Created: 2024/02/22 17:51:52 by cedmulle          #+#    #+#             */
+/*   Updated: 2024/02/22 20:29:14 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 
 # include "ClapTrap.hpp"
 
-class	FragTrap : public ClapTrap
+class	FragTrap : virtual public ClapTrap
 {
 	public:
-		FragTrap(std::string name);
-		FragTrap(const FragTrap &f);
-		FragTrap &operator=(const FragTrap &f);
+		FragTrap(void);
+		FragTrap(const std::string name);
+		FragTrap(const FragTrap &s);
+		FragTrap &operator=(const FragTrap &s);
 		~FragTrap(void);
 
-		void highFiveGuys(void);
-		void setTarget(FragTrap *target);
 		void attack(const std::string &target);
-	private:
-		FragTrap(void);
-		FragTrap *target;
+		void takeDamage(unsigned int amount);
+		void beRepaired(unsigned int amount);
+
+		void highFiveGuys(void);
 };
 
 #endif

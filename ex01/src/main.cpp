@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: cedmulle <cedmulle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 14:52:24 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/02/22 07:02:59 by cedmulle         ###   ########.fr       */
+/*   Created: 2024/02/22 16:34:00 by cedmulle          #+#    #+#             */
+/*   Updated: 2024/02/22 20:25:02 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,32 @@
 
 int	main(void)
 {
-	std::cout << CLEAR;
+	std::cout << CLR;
 
 	std::cout << GRY "// CONSTRUCTORS //" RST << std::endl;
-	ClapTrap	ct1("Zbeub");
-	ScavTrap	st1("Bill");
-	ScavTrap	st2("John");
-
-	st1.setTarget(&st2);
-	st2.setTarget(&st1);
-
-	std::cout << std::endl << GRY "// PRINT INFOS //" RST << std::endl;
-	st1.printInfos();
-	st2.printInfos();
-
-	std::cout << GRY "// BILL ATTACKS JOHN 2 TIMES //" RST << std::endl;
-	st1.attack("John");
-	st1.attack("John");
+	ClapTrap	ct1(MAG "John" RST);
+	ScavTrap	ct2(BLU "Bill" RST);
 
 	std::cout << std::endl << GRY "// JOHN ATTACKS BILL //" RST << std::endl;
-	st2.attack("Bill");
+	ct1.attack("Bill");
 
-	std::cout << std::endl << GRY "// PRINT INFOS //" RST << std::endl;
-	st1.printInfos();
-	st2.printInfos();
+	std::cout << std::endl << GRY "// BILL ATTACKS JOHN //" RST << std::endl;
+	ct2.attack("John");
 
-	std::cout << std::endl << GRY "// BILL IN GUARD MODE //" RST << std::endl;
-	st1.guardGate();
+	std::cout << std::endl << GRY "// JOHN TAKES 3 DAMAGE //" RST << std::endl;
+	ct1.takeDamage(3);
 
-	std::cout << std::endl << GRY "// JOHN IN GUARD MODE //" RST << std::endl;
-	st2.guardGate();
+	std::cout << std::endl << GRY "// BILL TAKES 5 DAMAGE //" RST << std::endl;
+	ct2.takeDamage(5);
+
+	std::cout << std::endl << GRY "// JOHN REPAIRED 1 POINTS //" RST << std::endl;
+	ct1.beRepaired(1);
+
+	std::cout << std::endl << GRY "// BILL REPAIRED 2 POINTS //" RST << std::endl;
+	ct2.beRepaired(2);
+
+	std::cout << std::endl << GRY "// BILL IN GUATE KEEPER MODE //" RST << std::endl;
+	ct2.guardGate();
 
 	std::cout << std::endl << GRY "// DESTRUCTORS //" RST << std::endl;
 	return (0);

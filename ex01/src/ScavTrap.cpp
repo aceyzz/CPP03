@@ -3,93 +3,126 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: cedmulle <cedmulle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 05:51:31 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/02/22 07:07:29 by cedmulle         ###   ########.fr       */
+/*   Created: 2024/02/22 17:37:50 by cedmulle          #+#    #+#             */
+/*   Updated: 2024/02/22 20:26:57 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ScavTrap.hpp"
+#include "ScavTrap.hpp"
 
+// COPLIEN FORM ////////////////////////////////////////////////////////////////
 ScavTrap::ScavTrap(void)
+: ClapTrap()
 {
-	this->_name = "DefaultName";
-	this->_health = 100;
-	this->_energy = 50;
-	this->_attack = 20;
-	this->_target = nullptr;
-	std::cout << "ScavTrap " << MAG << this->_name << RST;
-	std::cout << " default constructor called." << std::endl;
+	this->_hp = 100;
+	this->_en = 50;
+	this->_ap = 20;
+	std::cout << "ScavTrap default constructor called." << std::endl;
+	return ;
 }
 
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(const std::string name)
+: ClapTrap(name)
 {
 	this->_name = name;
-	this->_health = 100;
-	this->_energy = 50;
-	this->_attack = 20;
-	this->_target = nullptr;
-	std::cout << "ScavTrap " << MAG << this->_name << RST;
-	std::cout << " constructor called (with name)." << std::endl;
+	this->_hp = 100;
+	this->_en = 50;
+	this->_ap = 20;
+	std::cout << "ScavTrap " << this->_name << " constructor called." << std::endl;
+	return ;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &s)
+ScavTrap::ScavTrap(const ScavTrap &c)
 {
-	this->_name = s._name;
-	this->_health = s._health;
-	this->_energy = s._energy;
-	this->_attack = s._attack;
-	this->_target = s._target;
-	std::cout << "ScavTrap " << MAG << this->_name << RST;
-	std::cout << " copy assignment constructor called." << std::endl;
+	this->_name = c._name;
+	this->_hp = c._hp;
+	this->_en = c._en;
+	this->_ap = c._ap;
+	std::cout << "ScavTrap " << this->_name << " copy constructor called." << std::endl;
+	return ;
 }
 
-ScavTrap& ScavTrap::operator=(const ScavTrap &s)
+ScavTrap& ScavTrap::operator=(const ScavTrap &c)
 {
-	this->_name = s._name;
-	this->_health = s._health;
-	this->_energy = s._energy;
-	this->_attack = s._attack;
-	this->_target = s._target;
+	this->_name = c._name;
+	this->_hp = c._hp;
+	this->_en = c._en;
+	this->_ap = c._ap;
 	return (*this);
 }
 
 ScavTrap::~ScavTrap(void)
 {
-	std::cout << "ScavTrap " << MAG << this->_name << RST;
-	std::cout << " destructor called." << std::endl;
+	std::cout << "ScavTrap " << this->_name << " destructor called." << std::endl;
+	return ;
 }
-
-void	ScavTrap::setTarget(ScavTrap *target)
-{
-	this->_target = target;
-}
+////////////////////////////////////////////////////////////////////////////////
 
 void	ScavTrap::attack(const std::string &target)
 {
-	this->printAction("ScavTrap ", this->_name, " tries to attack:");
-	
-	if (!this->_energy || !this->_health)
-		return (this->printAction("ScavTrap ", this->_name, " does not have energy, or is dead. Can't attack."));
-	if (this->_target == nullptr)
-		return (this->printAction("ScavTrap ", this->_name, " has no target defined. Can't attack."));
-	if (this->_target->_name != target)
-		return (this->printAction("ScavTrap ", this->_name, " - " YEL + target + RST " - isn't his target. Can't attack."));
-	
-	this->_energy--;
-	
-	std::cout << "ScavTrap " MAG << this->_name << RST " attacks " MAG  << target;
-	std::cout << RST " causing " YEL << this->_attack << RST " points of damage. ";
-	std::cout << std::endl;
-	
-	this->_target->takeDamage(this->_attack);
+	if (!this->_hp || !this->_en)
+	{
+		std::cout << "ScavTrap " << this->_name << " tried to attack ";
+		std::cout << target << ", but he's dead" << std::endl;
+		return ;
+	}
+	else
+	{
+		this->_en--;
+		std::cout << "ScavTrap " << this->_name << " attack ";
+		std::cout << target << " with " << this->_ap;
+		std::cout << " attack points." << std::endl;
+		return ;
+	}
 }
 
-void	ScavTrap::guardGate(void)
+void ScavTrap::takeDamage(unsigned int amount)
 {
-	if (this->_health == 0)
-		return (this->printAction("ScavTrap ", this->_name, " wants to be in Gate keeper mode, but he's dead"));
+	if (this->_hp == 0)
+	{
+		std::cout << "ScavTrap " << this->_name;
+		std::cout << " took damage, but he's already dead." << std::endl;
+		return ;
+	}
 	else
-		return (this->printAction("ScavTrap ", this->_name, " is now in Gate keeper mode."));
+	{
+		(amount > this->_hp) ? this->_hp = 0 : this->_hp -= amount;
+		std::cout << "ScavTrap " << this->_name << " took ";
+		std::cout << amount << " damage." << std::endl;
+		return ;
+	}
+}
+
+void ScavTrap::beRepaired(unsigned int amount)
+{
+	if (this->_hp == 0 || this->_en == 0)
+	{
+		std::cout << "ScavTrap " << this->_name;
+		std::cout << " can't be repaired (no energy or is dead)." << std::endl;
+		return ;
+	}
+	else
+	{
+		this->_en--;
+		((amount + this->_hp) > this->_hp) ? this->_hp = 10 : this->_hp += amount;
+		std::cout << "ScavTrap " << this->_name << " repaired ";
+		std::cout << amount << " points." << std::endl;
+		return ;
+	}
+}
+
+void	ScavTrap::guardGate()
+{
+	if (!this->_hp)
+	{
+		std::cout << "ScavTrap " << this->_name << " wants to guard the gate, but he's dead." << std::endl;
+		return ;
+	}
+	else
+	{
+		std::cout << "ScavTrap " << this->_name << " is now in Gate Keeper mode." << std::endl;
+		return ;
+	}
 }

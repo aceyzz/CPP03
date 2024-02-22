@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: cedmulle <cedmulle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 07:40:07 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/02/22 08:52:00 by cedmulle         ###   ########.fr       */
+/*   Created: 2024/02/22 18:00:40 by cedmulle          #+#    #+#             */
+/*   Updated: 2024/02/22 18:03:56 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "ScavTrap.hpp"
 # include "FragTrap.hpp"
 
-class	DiamondTrap : public ScavTrap, public FragTrap
+class	DiamondTrap : virtual public ScavTrap, virtual public FragTrap
 {
 	public:
 		DiamondTrap(std::string name);

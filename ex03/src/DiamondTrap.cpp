@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: cedmulle <cedmulle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 07:47:48 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/02/22 09:04:51 by cedmulle         ###   ########.fr       */
+/*   Created: 2024/02/22 18:02:22 by cedmulle          #+#    #+#             */
+/*   Updated: 2024/02/22 18:04:44 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@ DiamondTrap::DiamondTrap(std::string name)
 {
 	this->_name = name;
 	this->ClapTrap::_name = name + "_clap_name";
-	this->FragTrap::_health = 100;
-	this->ScavTrap::_energy = 50;
-	this->FragTrap::_attack = 30;
-	this->printAction("DiamondTrap ", this->_name, " default constructor called (with name).");
+	this->FragTrap::_hp = 100;
+	this->ScavTrap::_en = 50;
+	this->FragTrap::_ap = 30;
+	std::cout << this->_name << " constructor called." << std::endl;
 }
 
 DiamondTrap::~DiamondTrap(void)
 {
-	this->printAction("DiamondTrap ", this->_name, " destructor called.");
+	std::cout << this->_name << " destructor called." << std::endl;
 }
 
 void	DiamondTrap::whoAmI(void)
 {
-	this->printAction("My DiamondTrap name is ", this->_name, ".");
-	this->printAction("And my ClapTrap name is ", this->ClapTrap::_name, ".");
+	std::cout << "My DiamonTrap name is " << this->_name << std::endl;
+	std::cout << "And my ClapTrap name is " << ClapTrap::_name << std::endl;
 }

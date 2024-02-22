@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: cedmulle <cedmulle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 14:52:24 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/02/22 05:41:11 by cedmulle         ###   ########.fr       */
+/*   Created: 2024/02/22 16:34:00 by cedmulle          #+#    #+#             */
+/*   Updated: 2024/02/22 17:11:48 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,30 @@
 
 int	main(void)
 {
-	std::cout << CLEAR;
+	std::cout << CLR;
 
+	std::cout << GRY "// CONSTRUCTORS //" RST << std::endl;
 	ClapTrap	ct1("John");
 	ClapTrap	ct2("Bill");
 
-	std::cout << std::endl;
-	std::cout << BLU "//// INIT TARGETS TO EACH OTHER ////" RST << std::endl;
-	ct1.setTarget(&ct2);
-	ct2.setTarget(&ct1);
-	std::cout << std::endl;
-
-	std::cout << BLU "//// PRINT INFOS ////" RST << std::endl;
-	ct1.printInfos();
-	ct2.printInfos();
-	std::cout << std::endl;
-
-	std::cout << BLU "//// JOHN ATTACKS WITH BAD ARGUMENT ////" RST << std::endl;
-	ct1.attack("invalidClaptrap");
-	std::cout << std::endl;
-
-	std::cout << BLU "//// JOHN ATTACKS WITH BILL ARGUMENT ////" RST << std::endl;
+	std::cout << std::endl << GRY "// JOHN ATTACKS BILL //" RST << std::endl;
 	ct1.attack("Bill");
-	std::cout << std::endl;
 
-	std::cout << BLU "//// JOHN REPAIR ITSELF WITH 12 POINTS ////" RST << std::endl;
-	ct1.beRepaired(12);
-	std::cout << std::endl;
+	std::cout << std::endl << GRY "// BILL ATTACKS JOHN //" RST << std::endl;
+	ct2.attack("John");
 
-	std::cout << BLU "//// PRINT INFOS ////" RST << std::endl;
-	ct1.printInfos();
-	ct2.printInfos();
-	std::cout << std::endl;
+	std::cout << std::endl << GRY "// JOHN TAKES 3 DAMAGE //" RST << std::endl;
+	ct1.takeDamage(3);
 
+	std::cout << std::endl << GRY "// BILL TAKES 5 DAMAGE //" RST << std::endl;
+	ct2.takeDamage(5);
+
+	std::cout << std::endl << GRY "// JOHN REPAIRED 1 POINTS //" RST << std::endl;
+	ct1.beRepaired(1);
+
+	std::cout << std::endl << GRY "// BILL REPAIRED 2 POINTS //" RST << std::endl;
+	ct2.beRepaired(2);
+
+	std::cout << std::endl << GRY "// DESTRUCTORS //" RST << std::endl;
 	return (0);
 }

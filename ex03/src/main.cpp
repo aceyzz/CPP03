@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: cedmulle <cedmulle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 14:52:24 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/02/22 09:08:54 by cedmulle         ###   ########.fr       */
+/*   Created: 2024/02/22 16:34:00 by cedmulle          #+#    #+#             */
+/*   Updated: 2024/02/22 20:34:51 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,44 @@
 
 int	main(void)
 {
-	std::cout << CLEAR;
+	std::cout << CLR;
 
-	std::cout << GRY "// CONSTRUCTORS JOHN //" RST << std::endl;
-	DiamondTrap dt1("John");
+	std::cout << GRY "// CONSTRUCTORS //" RST << std::endl;
+	ClapTrap	ct1(MAG "John" RST);
+	ScavTrap	st1(BLU "Bill" RST);
+	FragTrap	ft1(RED "Jane" RST);
+	std::cout << std::endl << GRY "// CONSTRUCTORS DIAMOND //" RST << std::endl;
+	DiamondTrap	dt1(YEL "GOLD" RST);
 
-	std::cout << std::endl << GRY "// CONSTRUCTORS BILL //" RST << std::endl;
-	DiamondTrap dt2("Bill");
+	std::cout << std::endl << GRY "// JOHN ATTACKS BILL //" RST << std::endl;
+	ct1.attack("Bill");
+	std::cout << std::endl << GRY "// BILL ATTACKS JOHN //" RST << std::endl;
+	st1.attack("John");
+	std::cout << std::endl << GRY "// JANE ATTACKS BILL //" RST << std::endl;
+	ft1.attack("Bill");
 
-	std::cout << std::endl << GRY "// CALL WHO AM I JOHN //" RST << std::endl;
+	std::cout << std::endl << GRY "// JOHN TAKES 3 DAMAGE //" RST << std::endl;
+	ct1.takeDamage(3);
+	std::cout << std::endl << GRY "// BILL TAKES 5 DAMAGE //" RST << std::endl;
+	st1.takeDamage(5);
+	std::cout << std::endl << GRY "// JANE TAKES 2 DAMAGE //" RST << std::endl;
+	ft1.takeDamage(2);
+
+	std::cout << std::endl << GRY "// JOHN REPAIRED 1 POINTS //" RST << std::endl;
+	ct1.beRepaired(1);
+	std::cout << std::endl << GRY "// BILL REPAIRED 2 POINTS //" RST << std::endl;
+	st1.beRepaired(2);
+	std::cout << std::endl << GRY "// JANE REPAIRED 4 POINTS //" RST << std::endl;
+	ft1.beRepaired(4);
+
+	std::cout << std::endl << GRY "// GOLD ATTACKS JANE //" RST << std::endl;
+	dt1.attack("Bill");
+	std::cout << std::endl << GRY "// GOLD ASK WHO THE FUCK HE IS //" RST << std::endl;
 	dt1.whoAmI();
-
-	std::cout << std::endl << GRY "// CALL GUARD GATE BILL //" RST << std::endl;
-	dt2.guardGate();
-
-	std::cout << std::endl << GRY "// CALL HIGH FIVE JOHN //" RST << std::endl;
+	std::cout << std::endl << GRY "// GOLD ATTACKS JANE //" RST << std::endl;
 	dt1.highFiveGuys();
-
-	std::cout << std::endl << GRY "// BILL ATTACK JOHN //" RST << std::endl;
-	dt2.attack("John");
-
-	std::cout << std::endl << GRY "// JOHN TAKES DAMAGE //" RST << std::endl;
-	dt1.takeDamage(30);
-
-	std::cout << std::endl << GRY "// JOHN BEREPAIRED //" RST << std::endl;
-	dt2.beRepaired(10);
+	std::cout << std::endl << GRY "// GOLD ASK WHO THE FUCK HE IS //" RST << std::endl;
+	dt1.guardGate();
 
 	std::cout << std::endl << GRY "// DESTRUCTORS //" RST << std::endl;
 	return (0);
