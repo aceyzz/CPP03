@@ -1,5 +1,7 @@
 <img src= "utils/3.png" width= 100%>
 
+---
+
 ## Exercice 00 - Aaaaand... OPEN!
 
 Implémenter une classe nommée `ClapTrap` représentant un robot doté de capacités d'attaque, de défense, et de réparation, constituant la base pour des personnages de jeu vidéo.
