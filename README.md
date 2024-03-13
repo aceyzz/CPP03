@@ -122,5 +122,3 @@ La classe `DiamondTrap` combine les caractéristiques et capacités spéciales d
 </details>
 
 <br>
-
-## Résultat
