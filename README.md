@@ -4,6 +4,9 @@
 
 ## Exercice 00 - Aaaaand... OPEN!
 
+<details>
+  <summary>Afficher/Masquer</summary>
+
 Implémenter une classe nommée `ClapTrap` représentant un robot doté de capacités d'attaque, de défense, et de réparation, constituant la base pour des personnages de jeu vidéo.
 
 ### Mon implémentation
@@ -30,9 +33,14 @@ La classe `ClapTrap` dispose des attributs privés suivants, initialisés selon 
 - Le constructeur de copie et l'opérateur d'affectation permettent de copier et d'assigner les attributs d'une instance à une autre.
 - Le destructeur affiche un message lorsqu'une instance de `ClapTrap` est détruite.
 
+</details>
+
 <br>
 
 ## Exercice 01 - Serena, my love!
+
+<details>
+  <summary>Afficher/Masquer</summary>
 
 Après avoir développé la classe de base `ClapTrap`, l'exercice suivant consiste à créer une classe dérivée `ScavTrap`, qui hérite de `ClapTrap` mais avec ses propres caractéristiques et une capacité spéciale.
 
@@ -56,9 +64,14 @@ Après avoir développé la classe de base `ClapTrap`, l'exercice suivant consis
 
 Les méthodes `attack`, `takeDamage`, et `beRepaired` sont surchargées pour refléter le comportement et les valeurs spécifiques de `ScavTrap`. Chaque méthode affiche des messages distincts qui reflètent les actions de `ScavTrap`.
 
+</details>
+
 <br>
 
 ## Exercice 02 - Repetitive work
+
+<details>
+  <summary>Afficher/Masquer</summary>
 
 Dans cet exercice, l'objectif était de créer une classe `FragTrap` qui hérite de `ClapTrap`, similaire à `ScavTrap` mais avec ses propres spécificités, notamment en ce qui concerne les messages affichés lors de la construction et de la destruction, ainsi qu'une capacité spéciale.
 
@@ -81,9 +94,14 @@ Dans cet exercice, l'objectif était de créer une classe `FragTrap` qui hérite
 
 Les méthodes `attack`, `takeDamage`, et `beRepaired` ont été surchargées pour adapter leur fonctionnement aux attributs spécifiques de `FragTrap`, et chaque action est accompagnée d'un message correspondant à ces ajustements.
 
+</details>
+
 <br>
 
 ## Exercice 03 - Now it’s weird! (Bonus)
+
+<details>
+  <summary>Afficher/Masquer</summary>
 
 L'exercice 03 introduit une classe `DiamondTrap`, une fusion des fonctionnalités de `ScavTrap` et `FragTrap`, héritant de ces deux classes. Cette classe représente une avancée dans la complexité de l'héritage multiple en C++.
 
@@ -100,3 +118,7 @@ La classe `DiamondTrap` combine les caractéristiques et capacités spéciales d
 ##### Fonctionnalités héritées
 - Utilise la fonction `attack` de `ScavTrap` grâce à l'utilisation de `using ScavTrap::attack;`, permettant à `DiamondTrap` d'attaquer avec les mêmes mécanismes que `ScavTrap`.
 - Inclut les capacités spéciales de `guardGate` de `ScavTrap` et de `highFiveGuys` de `FragTrap`, rendant `DiamondTrap` polyvalent dans ses interactions.
+
+</details>
+
+## Résultat
